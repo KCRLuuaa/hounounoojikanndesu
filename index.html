@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>奉納計算ツール</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f9e4c0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    form {
+      background-color: #ffffff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 0 30px #ff733b85;
+    }
+
+    form p {
+      margin: 3px 0;
+    }
+
+    input {
+      width: calc(80% - 12px);
+      padding: 6px;
+      border: 1px solid #d35e2f;
+      border-radius: 4px;
+    }
+
+    .calculate-button {
+      background-color: #1a9166;
+      color: #fff;
+      padding: 5px 77px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .reset-button {
+      background-color: #f67365;
+      color: #fff;
+      padding: 5px 17x;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .calculate-button:hover {
+      background-color: #14704e;
+    }
+
+    .reset-button:hover {
+      background-color: #8a322796;
+    }
+
+    output {
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    p.creator {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #7b71ec;
+    }
+
+    input[type="checkbox"] {
+      margin-right: -320px;
+    }
+
+    .section {
+      padding: 5px;
+      border-radius: 12px;
+      border: 2px solid;
+    }
+
+    p.checkbox-container {
+  display: flex;
+  align-items: flex-start;
+}
+
+    .sectionA {
+      border-color: #ff00006b;
+    }
+
+    .sectionB {
+      border-color: #000dff6b;
+    }
+  </style>
+</head>
+
+<body>
+  <form>
+    <div class="section sectionA">
+      <p>持ってる奉納加速の数</p>
+      <p><input type="number" name="a" id="a"> ｄ</p>
+      <p><input type="number" name="b" id="b"> ｈ</p>
+    </div>
+    <div class="section sectionB">
+      <p>お供えの魂の奉納時間</p>
+      <p><input type="number" name="c" id="c"> 時間</p>
+      <p><input type="number" name="d" id="d"> 分</p>
+      <p><input type="number" name="e" id="e"> 秒</p>
+    </div>
+
+    <p>
+      <button class="calculate-button" type="button" onclick="calculateResult()">計算する</button>
+      <button class="reset-button" type="reset" onclick="resetForm()">リセット</button>
+    </p>
+
+    <p>奉納ポイント: <output name="result" for="a b c d e"> 0</output>　　　　作成者：くらち</p>
+  </form>
+
+  <script>
+    function calculateResult() {
+      var resultOutput = document.querySelector('output[name="result"]');
+      var a = Number(document.getElementById('a').value);
+      var b = Number(document.getElementById('b').value);
+      var c = Number(document.getElementById('c').value);
+      var d = Number(document.getElementById('d').value);
+      var e = Number(document.getElementById('e').value);
+
+      var result = ((((a * 24 + b) * 60) * 60) / ((c * 60 + d) * 60 + e)) * 8;
+
+      resultOutput.textContent = Math.floor(result) + 'P';
+    }
+
+    function resetForm() {
+      var resultOutput = document.querySelector('output[name="result"]');
+      resultOutput.textContent = '0';
+    }
+  </script>
+</body>
+
+</html>
